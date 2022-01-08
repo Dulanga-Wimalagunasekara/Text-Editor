@@ -7,6 +7,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,8 +38,8 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </MenuBar>
-      <TextArea fx:id="txtArea" layoutX="-5.0" layoutY="91.0" prefHeight="470.0" prefWidth="967.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="91.0" />
-      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="54.0" prefWidth="960.0" style="-fx-background-color: #b4edeb;" AnchorPane.bottomAnchor="497.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0">
+      <TextArea fx:id="txtArea" layoutX="-5.0" layoutY="107.0" prefHeight="454.0" prefWidth="967.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="107.0" />
+      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="69.0" prefWidth="960.0" style="-fx-background-color: #b4edeb;" AnchorPane.bottomAnchor="482.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="2.0">
          <children>
             <Button fx:id="btnAddNew" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnAddNewOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
@@ -99,6 +101,27 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <TextField fx:id="txtFind" layoutX="562.0" layoutY="6.0" promptText="Find" />
+            <TextField fx:id="txtReplace" layoutX="561.0" layoutY="37.0" promptText="Replace" />
+            <Button layoutX="741.0" layoutY="6.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fx:id="btnUp" fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/imgUp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button layoutX="778.0" layoutY="6.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="22.0">
+               <graphic>
+                  <ImageView fx:id="btnDown" fitHeight="18.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/imgDown.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btnReplace" layoutX="740.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Replace" />
+            <ToggleButton fx:id="btnRegex" layoutX="834.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Regex" />
+            <ToggleButton fx:id="btnCaseSensitive" layoutX="834.0" layoutY="35.0" mnemonicParsing="false" text="Case Sensitive" />
          </children></AnchorPane>
       <Label layoutX="7.0" layoutY="562.0" prefHeight="22.0" prefWidth="116.0" text="Word Count : ">
          <font>
