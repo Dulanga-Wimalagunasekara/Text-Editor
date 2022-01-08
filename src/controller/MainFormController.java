@@ -38,6 +38,8 @@ public class MainFormController{
     public Label lblWordCount;
 
 
+    Path currentPath;
+
     public void initialize(){
 
         MenuItem aNew = new MenuItem("New");
@@ -143,8 +145,12 @@ public class MainFormController{
     }
 
     private void setWordCount() {
+        if(txtArea.getText().isEmpty()){
+            lblWordCount.setText(String.valueOf(0));
+            return;
+        }
         int count=0;
-        Matcher matcher = Pattern.compile("\\w+").matcher(txtArea.getText());
+        Matcher matcher = Pattern.compile("\\S+").matcher(txtArea.getText());
         while(matcher.find()){
             count++;
         }
@@ -160,6 +166,9 @@ public class MainFormController{
         OutputStream outputStream = Files.newOutputStream(path);
         String newString=txtArea.getText();
         outputStream.write(newString.getBytes());
+        Stage stage =(Stage)txtArea.getScene().getWindow();
+        stage.setTitle(file.getName());
+        currentPath=path;
     }
 
     private void writeData(File file) {
@@ -170,6 +179,7 @@ public class MainFormController{
     private void readData(File file) throws IOException {
         if(file!=null){
             Path path = Paths.get(String.valueOf(file));
+            currentPath=path;
             InputStream inputStream = Files.newInputStream(path);
             byte[] fileBytes = new byte[inputStream.available()];
             inputStream.read(fileBytes);
@@ -216,11 +226,19 @@ public class MainFormController{
         }
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws IOException {
         if (((Stage)txtArea.getScene().getWindow()).getTitle().equals("*Untitled")){
             menuBar.getMenus().get(0).getItems().get(2).fire();
         }else {
-            //
+            try{
+                OutputStream outputStream = Files.newOutputStream(currentPath);
+                outputStream.write(txtArea.getText().getBytes());
+                Stage stage =(Stage)txtArea.getScene().getWindow();
+                stage.setTitle(currentPath.getFileName().toString());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
     }
 
