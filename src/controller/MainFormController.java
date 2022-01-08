@@ -4,10 +4,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -25,6 +22,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainFormController{
 
@@ -36,6 +35,7 @@ public class MainFormController{
     public Button btnCut;
     public Button btnCopy;
     public Button btnPaste;
+    public Label lblWordCount;
 
 
     public void initialize(){
@@ -136,9 +136,23 @@ public class MainFormController{
             if (stage.getTitle().charAt(0)!='*'){
                 stage.setTitle("*"+stage.getTitle());
             }
+            setWordCount();
 
         });
 
+    }
+
+    private void setWordCount() {
+        int count=0;
+        Matcher matcher = Pattern.compile("\\w+").matcher(txtArea.getText());
+        while(matcher.find()){
+            count++;
+        }
+        int pre=0;
+        if(count>pre){
+           lblWordCount.setText(String.valueOf(count));
+           pre=count;
+        }
     }
 
     private void saveFile(File file) throws IOException {
@@ -172,8 +186,13 @@ public class MainFormController{
 
     public void btnPasteOnAction(ActionEvent actionEvent) {
         Clipboard pasteClip=Clipboard.getSystemClipboard();
-        int caretPosition = txtArea.getCaretPosition();
-        txtArea.insertText(caretPosition,pasteClip.getString());
+        if(txtArea.getSelectedText().isEmpty()){
+            int caretPosition = txtArea.getCaretPosition();
+            txtArea.insertText(caretPosition,pasteClip.getString());
+        } else{
+            txtArea.setText(txtArea.getText().replace(txtArea.getSelectedText(),pasteClip.getString()));
+        }
+
     }
 
     public void btnCopyOnAction(ActionEvent actionEvent) {
@@ -182,6 +201,7 @@ public class MainFormController{
             ClipboardContent clipboardContent = new ClipboardContent();
             clipboardContent.putString(txtArea.getSelectedText());
             systemClipboard.setContent(clipboardContent);
+            txtArea.deselect();
         }
     }
 
@@ -192,7 +212,7 @@ public class MainFormController{
             clipboardContent.putString(txtArea.getSelectedText());
             systemClipboard.setContent(clipboardContent);
             txtArea.setText(txtArea.getText().replaceAll(clipboardContent.getString(),""));
-
+            txtArea.deselect();
         }
     }
 
