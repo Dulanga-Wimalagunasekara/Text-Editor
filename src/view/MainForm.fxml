@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="587.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
    <children>
-      <MenuBar fx:id="menuBar" prefHeight="36.0" prefWidth="961.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <MenuBar fx:id="menuBar" prefHeight="36.0" prefWidth="961.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -39,7 +39,7 @@
          </cursor>
       </MenuBar>
       <TextArea fx:id="txtArea" layoutX="-5.0" layoutY="107.0" prefHeight="454.0" prefWidth="967.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="107.0" />
-      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="69.0" prefWidth="960.0" style="-fx-background-color: #b4edeb;" AnchorPane.bottomAnchor="482.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="2.0">
+      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="76.0" prefWidth="960.0" style="-fx-background-color: #b4edeb;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="35.0">
          <children>
             <Button fx:id="btnAddNew" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnAddNewOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
@@ -103,32 +103,42 @@
             </Button>
             <TextField fx:id="txtFind" layoutX="562.0" layoutY="6.0" promptText="Find" />
             <TextField fx:id="txtReplace" layoutX="561.0" layoutY="37.0" promptText="Replace" />
-            <Button layoutX="741.0" layoutY="6.0" mnemonicParsing="false">
+            <Button fx:id="btnUp" layoutX="741.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnUpOnAction">
                <graphic>
-                  <ImageView fx:id="btnUp" fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/imgUp.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="778.0" layoutY="6.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="22.0">
+            <Button fx:id="btnDown" layoutX="778.0" layoutY="6.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="22.0">
                <graphic>
-                  <ImageView fx:id="btnDown" fitHeight="18.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="18.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/imgDown.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnReplace" layoutX="740.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Replace" />
-            <ToggleButton fx:id="btnRegex" layoutX="834.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Regex" />
-            <ToggleButton fx:id="btnCaseSensitive" layoutX="834.0" layoutY="35.0" mnemonicParsing="false" text="Case Sensitive" />
+            <Button fx:id="btnReplace" layoutX="740.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnReplaceOnAction" prefHeight="26.0" prefWidth="73.0" text="Replace" />
+            <ToggleButton fx:id="btnRegex" layoutX="834.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnRegexOnAction" prefHeight="26.0" prefWidth="114.0" text="Regex" />
+            <ToggleButton fx:id="btnCaseSensitive" layoutX="834.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnCaseSensitiveOnAction" text="Case Sensitive" />
          </children></AnchorPane>
-      <Label layoutX="7.0" layoutY="562.0" prefHeight="22.0" prefWidth="116.0" text="Word Count : ">
+      <Label layoutX="9.0" layoutY="569.0" prefHeight="22.0" prefWidth="116.0" text="Word Count : ">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblWordCount" layoutX="119.0" layoutY="563.0" prefHeight="20.0" prefWidth="98.0">
+      <Label fx:id="lblWordCount" layoutX="119.0" layoutY="570.0" prefHeight="20.0" prefWidth="98.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="633.0" layoutY="571.0" prefHeight="22.0" prefWidth="116.0" text="Find Count:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblFindCount" layoutX="765.0" layoutY="570.0" prefHeight="22.0" prefWidth="116.0">
          <font>
             <Font size="16.0" />
          </font>

@@ -2,6 +2,7 @@ package controller;
 
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 
+import javax.swing.text.Highlighter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +23,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,14 +40,19 @@ public class MainFormController{
     public Label lblWordCount;
     public TextField txtFind;
     public TextField txtReplace;
-    public ImageView btnUp;
-    public ImageView btnDown;
     public Button btnReplace;
     public ToggleButton btnRegex;
     public ToggleButton btnCaseSensitive;
+    public Button btnUp;
+    public Button btnDown;
+    public Label lblFindCount;
 
 
     Path currentPath;
+    boolean txtChanged=false;
+    Matcher matcher;
+    ArrayList<Integer> referBack = new ArrayList();
+    ArrayList<Integer> referForward = new ArrayList();
 
     public void initialize(){
 
@@ -145,8 +153,64 @@ public class MainFormController{
                 stage.setTitle("*"+stage.getTitle());
             }
             setWordCount();
+            txtChanged=true;
+            findWords();
 
         });
+
+        txtFind.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtChanged=true;
+            findWords();
+
+        });
+
+        btnDown.setOnAction(event -> {
+            findWords();
+        });
+
+
+    }
+
+    private void foundedWords() {
+        int count =0;
+        if(matcher!=null){
+            while(matcher.find()){
+                count++;
+            }
+            matcher.reset();
+            lblFindCount.setText(String.valueOf(count));
+        }
+    }
+
+    private void findWords() {
+        if (!txtFind.getText().isEmpty()){
+            if (txtChanged){
+                int flag=0;
+                if (!btnCaseSensitive.isSelected()){
+                    flag=flag | Pattern.CASE_INSENSITIVE;
+                }
+                if (!btnRegex.isSelected()){
+                    flag=flag | Pattern.LITERAL;
+                }
+                matcher = Pattern.compile(txtFind.getText(),flag).matcher(txtArea.getText());
+                foundedWords();
+                txtChanged=false;
+                System.gc();
+            }
+            if (referForward.size()>2){
+                txtArea.selectRange(referForward.get(referForward.size()-4),referForward.get(referForward.size()-3));
+                referForward.remove(referForward.size()-4);
+                referForward.remove(referForward.size()-3);
+
+            }else if(matcher.find()){
+                referForward.clear();
+                txtArea.selectRange(matcher.start(),matcher.end());
+                referBack.add(matcher.start());
+                referBack.add(matcher.end());
+            }else {
+                matcher.reset();
+            }
+        }
 
     }
 
@@ -160,11 +224,7 @@ public class MainFormController{
         while(matcher.find()){
             count++;
         }
-        int pre=0;
-        if(count>pre){
-           lblWordCount.setText(String.valueOf(count));
-           pre=count;
-        }
+        lblWordCount.setText(String.valueOf(count));
     }
 
     private void saveFile(File file) throws IOException {
@@ -250,5 +310,37 @@ public class MainFormController{
 
     public void btnAddNewOnAction(ActionEvent actionEvent) {
         txtArea.clear();
+    }
+
+    public void btnCaseSensitiveOnAction(ActionEvent actionEvent) {
+        txtChanged=true;
+        findWords();
+    }
+
+    public void btnRegexOnAction(ActionEvent actionEvent) {
+        txtChanged=true;
+        findWords();
+    }
+
+    public void btnReplaceOnAction(ActionEvent actionEvent) {
+        if (!txtFind.getText().isEmpty()){
+            txtArea.setText(txtArea.getText().replaceAll(txtFind.getText(),txtReplace.getText()));
+        }
+
+    }
+
+    public void btnUpOnAction(ActionEvent actionEvent) {
+        if (referForward.size()==0){
+            referForward.add(referBack.get(referBack.size()-2));
+            referForward.add(referBack.get(referBack.size()-1));
+        }
+
+        txtArea.selectRange(referBack.get((referBack.size())-4),referBack.get((referBack.size()-3)));
+        referForward.add(referBack.get((referBack.size()-4)));
+        referForward.add(referBack.get((referBack.size()-3)));
+
+        referBack.remove(referBack.size()-4);
+        referBack.remove(referBack.size()-3);
+
     }
 }
