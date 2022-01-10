@@ -2,20 +2,19 @@ package controller;
 
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 
-import javax.swing.text.Highlighter;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,11 +47,13 @@ public class MainFormController{
     public Label lblFindCount;
 
 
+
     Path currentPath;
     boolean txtChanged=false;
     Matcher matcher;
     ArrayList<Integer> referBack = new ArrayList();
     ArrayList<Integer> referForward = new ArrayList();
+
 
     public void initialize(){
 
@@ -144,7 +145,19 @@ public class MainFormController{
         MenuItem about=menuBar.getMenus().get(2).getItems().get(0);
 
         about.setOnAction(event -> {
-            //
+            Stage stage = new Stage();
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AboutForm.fxml"))));
+                stage.setTitle("About");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(txtArea.getScene().getWindow());
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         });
 
         txtArea.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -168,8 +181,8 @@ public class MainFormController{
             findWords();
         });
 
-
     }
+
 
     private void foundedWords() {
         int count =0;
@@ -235,11 +248,6 @@ public class MainFormController{
         Stage stage =(Stage)txtArea.getScene().getWindow();
         stage.setTitle(file.getName());
         currentPath=path;
-    }
-
-    private void writeData(File file) {
-        Path pathWrite = Paths.get(String.valueOf(file)+"/"+file.getName());
-        System.out.println(pathWrite);
     }
 
     private void readData(File file) throws IOException {
@@ -341,6 +349,7 @@ public class MainFormController{
 
         referBack.remove(referBack.size()-4);
         referBack.remove(referBack.size()-3);
+
 
     }
 }

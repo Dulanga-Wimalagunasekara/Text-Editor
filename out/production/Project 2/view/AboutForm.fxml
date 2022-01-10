@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="aboutpane" prefHeight="543.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutFormController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="182.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/imgAddNew.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="203.0" layoutY="193.0" prefHeight="31.0" prefWidth="116.0" text="Final Editor">
+         <font>
+            <Font name="Noto Sans Bamum Regular" size="19.0" />
+         </font>
+      </Label>
+      <Text layoutX="27.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A Simple Text Editor Developed by Dulanga Wimalagunasekara." wrappingWidth="470.7294921875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="27.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Licensed under the MIT License." wrappingWidth="470.7294921875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="26.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For more details, please refer the README file." wrappingWidth="470.7294921875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="59.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright Ⓒ 2021 - present Dulanga Wimalagunasekara" wrappingWidth="399.7294921875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="176.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Rights Reserved" wrappingWidth="138.7294921875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="182.0" layoutY="470.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="26.0" prefWidth="150.0" text="Okay" />
+   </children>
+</AnchorPane>
