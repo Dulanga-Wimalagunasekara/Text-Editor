@@ -38,10 +38,10 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </MenuBar>
-      <TextArea fx:id="txtArea" layoutX="-5.0" layoutY="107.0" prefHeight="454.0" prefWidth="967.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="107.0" />
-      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="76.0" prefWidth="960.0" style="-fx-background-color: #b4edeb;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="35.0">
+      <TextArea fx:id="txtArea" layoutX="-5.0" layoutY="107.0" prefHeight="557.0" prefWidth="967.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="107.0" />
+      <AnchorPane layoutX="-1.0" layoutY="36.0" prefHeight="76.0" prefWidth="960.0" style="-fx-background-color: #55d994;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="35.0">
          <children>
-            <Button fx:id="btnAddNew" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnAddNewOnAction" prefHeight="36.0" prefWidth="53.0">
+            <Button fx:id="btnAddNew" layoutX="20.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnAddNewOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,7 +53,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnSave" layoutX="89.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="36.0" prefWidth="53.0">
+            <Button fx:id="btnSave" layoutX="89.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,7 +65,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCut" layoutX="226.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCutOnAction" prefHeight="36.0" prefWidth="53.0">
+            <Button fx:id="btnCut" layoutX="226.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnCutOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,7 +77,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCopy" layoutX="159.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCopyOnAction" prefHeight="36.0" prefWidth="53.0">
+            <Button fx:id="btnCopy" layoutX="159.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnCopyOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +89,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnPaste" layoutX="292.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPasteOnAction" prefHeight="36.0" prefWidth="53.0">
+            <Button fx:id="btnPaste" layoutX="292.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnPasteOnAction" prefHeight="36.0" prefWidth="53.0">
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -101,9 +101,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="txtFind" layoutX="562.0" layoutY="6.0" promptText="Find" />
-            <TextField fx:id="txtReplace" layoutX="561.0" layoutY="37.0" promptText="Replace" />
-            <Button fx:id="btnUp" layoutX="741.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnUpOnAction">
+            <TextField fx:id="txtFind" layoutX="562.0" layoutY="6.0" promptText="Find" AnchorPane.rightAnchor="227.0" />
+            <TextField fx:id="txtReplace" layoutX="561.0" layoutY="37.0" promptText="Replace" AnchorPane.rightAnchor="227.0" />
+            <Button fx:id="btnUp" layoutX="740.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnUpOnAction" AnchorPane.rightAnchor="187.0">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -111,7 +111,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnDown" layoutX="778.0" layoutY="6.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="22.0">
+            <Button fx:id="btnDown" layoutX="778.0" layoutY="6.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="22.0" AnchorPane.rightAnchor="150.0">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -119,29 +119,33 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnReplace" layoutX="740.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnReplaceOnAction" prefHeight="26.0" prefWidth="73.0" text="Replace" />
-            <ToggleButton fx:id="btnRegex" layoutX="834.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnRegexOnAction" prefHeight="26.0" prefWidth="114.0" text="Regex" />
-            <ToggleButton fx:id="btnCaseSensitive" layoutX="834.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnCaseSensitiveOnAction" text="Case Sensitive" />
+            <Button fx:id="btnReplace" layoutX="740.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnReplaceOnAction" prefHeight="26.0" prefWidth="73.0" text="Replace" AnchorPane.rightAnchor="147.0" />
+            <ToggleButton fx:id="btnRegex" layoutX="834.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnRegexOnAction" prefHeight="26.0" prefWidth="114.0" text="Regex" AnchorPane.rightAnchor="12.0" />
+            <ToggleButton fx:id="btnCaseSensitive" layoutX="834.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnCaseSensitiveOnAction" text="Case Sensitive" AnchorPane.rightAnchor="12.0" />
          </children></AnchorPane>
-      <Label layoutX="9.0" layoutY="569.0" prefHeight="22.0" prefWidth="116.0" text="Word Count : ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblWordCount" layoutX="119.0" layoutY="570.0" prefHeight="20.0" prefWidth="98.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="633.0" layoutY="571.0" prefHeight="22.0" prefWidth="116.0" text="Find Count:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblFindCount" layoutX="765.0" layoutY="570.0" prefHeight="22.0" prefWidth="116.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="-5.0" layoutY="561.0" prefHeight="26.0" prefWidth="967.0" style="-fx-background-color: #55d994;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-1.0">
+         <children>
+            <Label layoutX="19.0" layoutY="3.0" prefHeight="22.0" prefWidth="116.0" text="Word Count : ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="703.0" layoutY="1.0" prefHeight="22.0" prefWidth="116.0" text="Find Count:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblWordCount" layoutX="136.0" layoutY="4.0" prefHeight="20.0" prefWidth="98.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblFindCount" layoutX="804.0" layoutY="2.0" prefHeight="22.0" prefWidth="116.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
