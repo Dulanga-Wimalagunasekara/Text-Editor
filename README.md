@@ -18,7 +18,7 @@
 </details>
 
 ## About The Project
-![](./assets/screen.png)
+![](./src/assets/screen.png)
 
 * This is a Simple Text Editing software developed by me to learn,demonstrate and pratice many forms in **JavaFx Applications** and **Java SE** related programmes.
 
